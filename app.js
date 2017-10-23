@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 	res.render('index');
 })
 
-// GET all users 
+// GET display all users 
 app.get('/users', function (req, res) {
 	fs.readFile('./users.json', function(err, data) {
 		if(err) {
@@ -29,7 +29,7 @@ app.get('/users', function (req, res) {
 	}); 
 });
 
-// GET specific user
+// GET display specific user
 app.get('/searched', function (req, res) {
 	let input = req.query.q;
 	fs.readFile('./users.json', function(err, data) {
@@ -39,7 +39,7 @@ app.get('/searched', function (req, res) {
 		const parsed = JSON.parse(data);
 		const output = parsed.find(element => element.firstname === input || element.lastname === input); 
 
-		res.render('./searched', {users: output, q: input});
+		res.render('./searched', {users: output, q: input});	//pass on all users + the search query so it can be displayed
 	});
 });
 
@@ -51,7 +51,7 @@ app.get('/add-new', function (req, res) {
 //POST create new user
 app.post('/add-new', function(req, res) {
 
-	const newUser = {											// we put the new user data into an object 'newUser'
+	const newUser = {											// put the new user data into an object 'newUser'
 		firstname: req.body.fn,
 		lastname: req.body.ln,
 		email: req.body.e
@@ -69,8 +69,8 @@ app.post('/add-new', function(req, res) {
 			if(err) {
 				throw err;
 			}
-			let message = true;									// pass on the variable 
-			res.render('./users', {users: parsed, message: message});
+			let message = true;									// pass on boolean so success message can be displayed
+			res.render('./users', {users: parsed, message: message}); //pass on two objects
 		});
 	});
 });
