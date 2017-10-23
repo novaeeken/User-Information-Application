@@ -16,7 +16,7 @@
   font-size: 1.2em;
 }
 
-#firstname, #lastname, #email {
+#firstname, #lastname, #email {   /*input fields */
   margin-bottom: 10px;
 }
 
@@ -26,18 +26,12 @@
   background-color: #022c36;
   font-size: 1.2em;
 }
-.navbar .navbar-brand>img {
+.navbar .navbar-brand>img {       /*database logo */
   color: #fdd23e;
   height: 220%;
   margin-top: -17px;
 
 }
-
-/*.navbar-brand>img {
-  height: 100%;
-  padding: 15px;
-  width: auto;
-}*/
 
 @media (min-width: 768px) {       /*the width on which the screen will change due to responsiveness */
   .form-inline .form-control {
@@ -45,6 +39,14 @@
     width: 800px;
     vertical-align: middle;
   }
+}
+
+#add {                    /*add button properties */
+  margin-top: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #f1b540;
+  border: none;
 }
 
 #search {                 /*Search bar properties*/ 
