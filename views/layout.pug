@@ -1,26 +1,46 @@
-doctype html
-html
-	head
-		meta(charset="utf-8")
-		meta(name="viewport" content="width=device-width, initial-scale=1")
-		title User Information Application 
-		link(rel="stylesheet" type="text/css" href="/css/style.css")
-		link(href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css')
-		link(rel="icon" type="image/png" href="#" sizes="32x32")
-	body
-		nav
-			ul
-				li
-					a(href="/") Home
-				li
-					a(href="/users") Users
-				li
-					a(href="#") New
-				li
-					a(href="#") About
-		
-		block content
+doctype
+html( lang="en" )
+    head
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        title User Information Application
+        //- Bootstrap Theme
+        link(href="https://bootswatch.com/solar/bootstrap.min.css", rel="stylesheet")
+        //- Own CSS file
+        link(rel="stylesheet" href="css/style.css")
+        link(rel="icon" type="image/png" href="images/icon.png" sizes="32x32")
+ 
+    body(style="padding-bottom:10rem;")
 
-		footer
-			p This is a footer
-			p This is information about this company. 
+        //- MAIN NAVIGATION 
+        nav.navbar.navbar( role="navigation" )
+            div.container
+                div.navbar-header
+                        button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
+                            span.sr-only Toggle navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href="#")
+                            img(src="images/logo_01.png" alt="logo image")
+
+                div#navbar-inverse.collapse.navbar-collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li.active: a( href="/") Home
+                        li: a( href="/users" ) User database
+                        li: a( href="/add-new" ) New user
+
+            //- HEADER IMAGE
+            div.header 
+                div.row
+                    div.col-lg-12
+                    img.img-responsive(src="images/header1.png" alt="Header image")
+        
+        //-MAIN BODY 
+        div.container 
+            block content
+
+        //- LINK TO BOOTSTRAP + JQUERY LIBRARY
+        script( src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' )
+        script( src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
