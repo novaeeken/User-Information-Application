@@ -1,0 +1,10 @@
+extends bootstrap-layout.pug
+
+block content
+	div
+		h1 Search the UIA Database
+		br
+	form.form-inline(action="/searched" method="get")
+		div.form-group
+			input.form-control(type="search" id="search" placeholder="Type your search query here" name="q")
+		button.btn.btn-default(type="submit" id="submit") Search

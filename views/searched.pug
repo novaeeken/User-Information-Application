@@ -1,0 +1,19 @@
+extends bootstrap-layout.pug
+
+block content
+	div
+		h1 Search the UIA Database
+		br
+	form.form.form-inline(action="/searched" method="get")
+		div.form-group
+			input.form-control(type="search" id="search" placeholder="Type your search query here" name="q")
+		button.btn.btn-default(type="submit" id="submit") Search
+
+	div.result
+		br
+		h4 Results matching your search: "#{q}"
+		div.output
+			if users
+				p#output <b>Name:</b> #{users.firstname} #{users.lastname} | <b>e-mail:</b> #{users.email}
+			else 
+				p Oops! There are no users in our system that match your search. 

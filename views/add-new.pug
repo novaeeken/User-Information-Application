@@ -1,0 +1,24 @@
+extends bootstrap-layout.pug
+
+block content
+	
+	div
+		h1 Add new users to the UIA/NOVA database
+		br
+	form.form.form-inline(action="/add-new" method="post" id="create-user")
+		div.form-group
+			label(for="firstname") First name:
+			br
+			input.form-control(type="firstname" id="firstname" placeholder="John" name="fn")
+		div.form-group
+			label(for="lastname") Last name:
+			br
+			input.form-control(type="lastname" id="lastname" placeholder="Doe" name="ln")
+		div.form-group
+			label(for="email") Email address:
+			br
+			input.form-control(type="email" id="email" placeholder="somebody@gmail.com" name="e")
+		br
+		button.btn.btn-default(type="submit" id="add") Add
+
+

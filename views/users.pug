@@ -1,0 +1,15 @@
+extends bootstrap-layout.pug
+
+block content
+	//- succes-message will only show when a new user is added 
+	if message
+		div.alert.alert-success.alert-dismissable
+			a.close(href="#", data-dismiss="alert" aria-label="close") &times; 
+			p <strong>Yay!</strong> Sucessfully added a new user!
+
+	div
+		h1 All users
+		p Currently there are <b id="bold">#{users.length}</b> users in our database:
+		each user in users
+			div.output
+				p#output <b>Name:</b> #{user.firstname} #{user.lastname} | <b>e-mail:</b> #{user.email}

@@ -1,0 +1,53 @@
+#output {
+  background-color: #043d4b;
+  border: 2px solid #044a5a;
+  padding: 12px 10px 12px 30px;
+  width: 500px;
+  margin: 12px 0px;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+#output:hover {
+  background-color: #065f74;
+}
+
+#bold {
+  color: #fdd23e;
+  font-size: 1.2em;
+}
+
+#firstname, #lastname, #email {
+  margin-bottom: 10px;
+}
+
+/*OVERWRITE BOOTSTRAP TEMPLATE*/
+
+.navbar { 
+  background-color: #022c36;
+  font-size: 1.2em;
+}
+.navbar .navbar-brand>img {
+  color: #fdd23e;
+  height: 220%;
+  margin-top: -17px;
+
+}
+
+/*.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}*/
+
+@media (min-width: 768px) {       /*the width on which the screen will change due to responsiveness */
+  .form-inline .form-control {
+    display: inline-block;
+    width: 800px;
+    vertical-align: middle;
+  }
+}
+
+#search {                 /*Search bar properties*/ 
+  margin-right: 10px;
+}
+
