@@ -4,7 +4,49 @@ block content
 	div
 		h1 Search the database
 		br
-	form.form-inline(action="/searched" method="get")
+	form.form-inline(action="/searched" method="get" autocomplete="off")
 		div.form-group
 			input.form-control(type="search" id="search" placeholder="Type your search query here" name="q")
 		button.btn.btn-default(type="submit" id="submit") Search
+	div#suggestbox
+		ul#suggestcontent <!-- suggestions show here -->
+
+	script(src="https://code.jquery.com/jquery-3.2.1.js")
+	script.
+		
+		$('#suggestbox').hide();
+		$(document).ready(function() {
+			
+			let list = [];
+
+			// RETRIEVING SUGGESTIONS
+			$.get('/suggest', function(data) {
+				list = data.suggestlist;
+			});
+
+			//DISPLAYING + CLICKING SUGGESTIONS
+			$("#search").keyup(function() {
+				let suggestions = "";
+				let input = $("#search").val(); //.charAt(0).toUpperCase();	// make everything with first uppercase letter
+
+				if(input != "") {
+					$('#suggestbox').show();	// only show suggestionbox when there is at least one character
+
+					const match = list.filter(function (element) {return element.includes(input)});
+
+					for (i = 0; i < match.length; i++) {
+						suggestions += `<li class="suggest" name="${match[i]}">${match[i]}</li>`
+					};
+					$('#suggestcontent').html(`${suggestions}`);
+
+				} else {
+					$('#suggestbox').hide();	// when input is empty, hide suggestionbox 
+				}
+				
+				$(".suggest").on("click", function() {
+					$('#suggestbox').hide();
+					let click = $(this).attr("name");
+					$("#search").val(`${click}`);
+				});
+			});
+		});

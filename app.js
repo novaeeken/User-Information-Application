@@ -18,7 +18,24 @@ app.get('/', function (req, res) {
 	res.render('index');
 })
 
-// GET display all users 
+// GET list of users (SEND)
+app.get('/suggest', function (req, res) {
+	fs.readFile('./users.json', function(err, data) {
+		if(err) {
+			throw err;
+		} 
+		let list = [];
+		const parsed = JSON.parse(data);
+		
+		for(let i = 0; i < parsed.length; i++) { 
+			list.push(parsed[i].firstname + " " + parsed[i].lastname);
+		};
+
+		res.send({suggestlist: list});
+	}); 
+});
+
+// GET display page all users 
 app.get('/users', function (req, res) {
 	fs.readFile('./users.json', function(err, data) {
 		if(err) {
@@ -29,21 +46,23 @@ app.get('/users', function (req, res) {
 	}); 
 });
 
-// GET display specific user
+// GET search specific user
 app.get('/searched', function (req, res) {
 	let input = req.query.q;
+	let lastword = input.split(/\s+/).pop();	// if both first- and lastname are entered, just match the last name
+
 	fs.readFile('./users.json', function(err, data) {
 		if(err) {
 			throw err;
 		} 
 		const parsed = JSON.parse(data);
-		const output = parsed.find(element => element.firstname === input || element.lastname === input); 
+		const output = parsed.find(element => element.firstname.toLowerCase() === lastword.toLowerCase() || element.lastname.toLowerCase() === lastword.toLowerCase()); 
 
 		res.render('./searched', {users: output, q: input});	//pass on all users + the search query so it can be displayed
 	});
 });
 
-//GET create new user
+//GET new user page
 app.get('/add-new', function (req, res) {
 	res.render('./add-new');
 });
