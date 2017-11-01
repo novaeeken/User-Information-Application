@@ -4,10 +4,12 @@ block content
 	div
 		h1 Search the database
 		br
-	form.form.form-inline(action="/searched" method="get")
+	form.form-inline(action="/searched" method="get" autocomplete="off")
 		div.form-group
 			input.form-control(type="search" id="search" placeholder="Type your search query here" name="q")
 		button.btn.btn-default(type="submit" id="submit") Search
+	div#suggestbox
+		ul#suggestcontent <!-- suggestions will show here -->
 
 	div.result
 		br
@@ -17,3 +19,6 @@ block content
 				p#output <b>Name:</b> #{users.firstname} #{users.lastname} | <b>e-mail:</b> #{users.email}
 			else 
 				p Oops! There are no users in our system that match your search. 
+
+	script(src="https://code.jquery.com/jquery-3.2.1.js")
+	script(src="js/suggestions.js")

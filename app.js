@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // SET UP ROUTING
 
-//GET homepage 
+//GET homepage (RENDER)
 app.get('/', function (req, res) {
 	res.render('index');
 })
@@ -35,7 +35,7 @@ app.get('/suggest', function (req, res) {
 	}); 
 });
 
-// GET display page all users 
+// GET display all users (RENDER)
 app.get('/users', function (req, res) {
 	fs.readFile('./users.json', function(err, data) {
 		if(err) {
@@ -46,7 +46,7 @@ app.get('/users', function (req, res) {
 	}); 
 });
 
-// GET search specific user
+// GET search specific user (RENDER)
 app.get('/searched', function (req, res) {
 	let input = req.query.q;
 	let lastword = input.split(/\s+/).pop();	// if both first- and lastname are entered, just match the last name
@@ -62,12 +62,12 @@ app.get('/searched', function (req, res) {
 	});
 });
 
-//GET new user page
+//GET create new user (RENDER)
 app.get('/add-new', function (req, res) {
 	res.render('./add-new');
 });
 
-//POST create new user
+//POST create new user (RENDER)
 app.post('/add-new', function(req, res) {
 
 	const newUser = {											// put the new user data into an object 'newUser'
