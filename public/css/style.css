@@ -20,6 +20,26 @@
   margin-bottom: 10px;
 }
 
+/*SUGGESTION CSS*/
+
+#suggestcontent {
+  list-style: none;
+  width: 70%;
+  background-color: #043d4b;
+  border: 2px solid #044a5a;
+  padding: 0px;
+}
+
+.suggest:hover {
+  cursor: pointer;
+  background-color: #065f74;
+}
+
+.suggest {
+  padding: 10px;
+}
+
+
 /*OVERWRITE BOOTSTRAP TEMPLATE*/
 
 .navbar { 
